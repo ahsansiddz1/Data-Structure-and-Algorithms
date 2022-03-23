@@ -16,26 +16,6 @@ package data.structure;
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
-//Hey Kunal, thank you for your videos.
-//        I was coding along with you (trying on my own and checking back), was running different tests and found some mistakes.
-//
-//        In your version of circular linked list there is an NPA for the display method if our list is of size 1. I realised, it is because you didn't assign
-//        head.next = node;
-//        tail.next = node;
-//        when creating the first Node in the insert method.
-//
-//        The delete method of CLL works with list size > 1, and will not delete the only node in the list of size 1. So I added this code:
-//        if(size == 1 && head.value == value) {
-//        head = null;
-//        tail = null;
-//        size--;
-//        return;
-//        }
-//        And if there is no need in extra variable such as 'size' (like there is no in the video), we can use
-//        if(head.next == head && head.value == value)
-//
-//        Thanks again, and don't take this as a critique (maybe a very little), but through this self work I deepen my understanding.
-
 public class SinglyLinkedList {
 
     private NodeI head;
