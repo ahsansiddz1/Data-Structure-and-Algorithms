@@ -12,7 +12,8 @@ package data.structure;
         // 6. For Inserting Element at specific Index
         // 7. For deleting Element from specific index
         // 8. For finding value of specific index
-        // 9. For Displaying LinkedList
+        // 9. Insert element at specific index using recursion (insusingrec)
+        // 10. For Displaying LinkedList
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -164,9 +165,39 @@ public class SinglyLinkedList {
         }
         return node;
     }
-
     //---------------------------------------------------------------------------------------------------------------------------------
-    // 9. For Displaying LinkedList
+    // 9. Insert element at specific index using recursion
+                                                        // 54 24 32 34 95
+       public void insusingrec(int value,int index){    // 888 ->3rd INDEX
+        head=insertRec(  value,  index,  head);         // 888 3 (54-node)
+        }
+
+       private NodeI insertRec(int value,int index,NodeI node)
+       {
+           if(index==0) //888 0 34
+           {
+               NodeI temp=new NodeI(value,node); // 888 (becomes current node)  34 (becomes next node)
+
+               size++;
+               return temp; // return node of 888
+
+
+           }
+
+           node.next=insertRec(value,index-1,node.next); // 888 2 24  // 888 1 32 // 888 0 34
+           return node; //returns 54 (approaches to head)
+
+//           54.next=(888,2,24) - > wait1
+//           24.next=(888 1 32 ) -> wait2
+//           32.next=(888 0 34) -> wait3
+           //then "if(index==0)" condition satisfies - temp returns 888
+           // 32.next = 888
+           //24.next=32
+           //54.next=24
+
+       }
+    //---------------------------------------------------------------------------------------------------------------------------------
+    // 10. For Displaying LinkedList
 
     public void display(){
         NodeI temp=head;
@@ -209,18 +240,20 @@ public class SinglyLinkedList {
 
             System.out.print("Inserted 7 elements : ");
             list.insertFirst(95);
-            list.insertFirst(44);
+            list.insertFirst(34);
             list.insertFirst(32);
             list.insertFirst(24);
+            list.insertFirst(54);
 //            list.insertFirst(11);
 //            list.insertFirst(30);
-            list.insertLast(29); //insert at tail
+//            list.insertLast(29); //insert at tail
 //            list.display();
 //            System.out.print("Inserting element at 3rd index --->  ");
-            list.insert(100,2); // insert element at specific index
+//            list.insert(100,2); // insert element at specific index
 //            list.display();
 //            list.delFirst(); //delete head element
 //            list.delLast(); //delete tail element
+            list.insusingrec(888,3);
             list.display();
 //            list.delete(3); //Delete element of specific index
 //            list.display();

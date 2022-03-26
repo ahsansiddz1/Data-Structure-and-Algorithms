@@ -1,5 +1,6 @@
 package data.structure;
-
+//Amazon and Microsft Questions (included)
+//https://leetcode.com/problems/linked-list-cycle/
 public class circularLinkedList {
     Node head;
     Node tail;
@@ -56,7 +57,45 @@ public class circularLinkedList {
 
         }
     }
+    public boolean hasCycle(Node head) { //checking is that a circular linkedList or not <  timecomplexity=O(n) >
+        Node fast=head;
+        Node slow=head;
+if(head!=null) { //edge case
+    while (fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+        if (fast == slow) {
+            return true;
+        }
+    }
+    return false;
+}
+else System.out.println(" --> List is empty so we can't predict about conclusions <-- ");
+return false;
+    }
 
+    public int lengthCycle(Node head) { //length of cycle
+        Node fast=head;
+        Node slow=head;
+
+        while(fast!=null && fast.next!=null)
+        {
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                Node temp=slow;
+                int length=0;
+                do{
+                    temp=temp.next;
+                    length++;
+                }
+                while (temp!=slow);
+                return length;
+
+            }
+        }
+        return  0;
+    }
     public void display(){
         Node temp=head;
        if(head!=null){
@@ -88,5 +127,11 @@ public class circularLinkedList {
          CLL.add(233);
          CLL.add(234);
          CLL.display();
+         System.out.println();
+         if(CLL.head!=null)
+         System.out.println("Is that a circular linkedList? "+CLL.hasCycle(CLL.head));
+        else CLL.hasCycle(CLL.head);
+         System.out.println("length of cycle : " + CLL.lengthCycle(CLL.head));
+
      }
  }
