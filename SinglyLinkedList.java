@@ -16,7 +16,6 @@ package data.structure;
         // 10. For Displaying LinkedList
 //---------------------------------------------------------------------------------------------------------------------------------
 
-
 public class SinglyLinkedList {
 
     private NodeI head;
