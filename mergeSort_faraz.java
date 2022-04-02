@@ -1,4 +1,4 @@
-package data.structure.data.structure;
+package  data.structure;
 import java.util.Arrays;
 public class mergeSort_faraz {
     public static int[] mergeSort(int[] arr , char order){
