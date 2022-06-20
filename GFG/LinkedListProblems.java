@@ -241,46 +241,54 @@ class LinkedListProblems{
     // Take elements(numbers in the range of 1-50) of a Linked List as input from the user. Delete all nodes
     // which have values greater than 25.
 
-    public Node deleteGreaterthan25()
-    {
-        if(head == null) {
+    public Node deleteGreaterthan25() {
+        if (head == null) {
             System.out.println("Empty List ");
             return null;
         }
 
-        Node temp=head;
-         Node currNode=head;
-        Node lastNode = head.next;
+        Node temp = head;
 
-       while (lastNode!=null && currNode!=null)
-        {
-            if (currNode.data>25)
+
+        while (temp.data > 25) { //skip all starting elements which is greater than 25
+            if (temp.next == null) {
+                return null;
+            }
+            temp = temp.next;
+        }
+        Node currNode = temp;
+        Node lastNode = temp.next;
+
+        while (lastNode != null ) {
+
+            if(currNode.next==null) //if there is only one element which is less than 25
             {
+                return temp;
+            }
+
+              if(lastNode.data>25){
+                  while (lastNode.data>25)
+                  {
+                      if(lastNode.next==null) //if the last element is greater than 25, then just skip it by making currNode.next to null
+                      {
+                          currNode.next=null;
+                          return temp;
+                      }
+                      lastNode=lastNode.next;
+
+                  }
+                  currNode.next=lastNode;
+
+              }
+
+
                 currNode=currNode.next;
                 lastNode=lastNode.next;
-                size--;
-            }
-
-           else if(lastNode.data>25)
-            {
-                while(lastNode.data>25){
-                    size--;
-                    lastNode=lastNode.next;
-                }
-                currNode.next=lastNode;
-                currNode=currNode.next;
-                lastNode=lastNode.next; //if error occurs in test case use this condition => if last node.nxt!=null
-
-            }
-           else{
-               currNode=currNode.next;
-               lastNode=lastNode.next;
-            }
 
         }
+//        currNode.next=null;
         return temp;
     }
-
 
     //for printing output
 
@@ -321,3 +329,6 @@ class LinkedListProblems{
 
     }
 }
+
+
+ 

@@ -1,11 +1,12 @@
 public class Recursion {
     public static void main(String[] args) {
-        int[] a={3,4,2,0,12,-23,12,2,4,5};
+        int[] a = {3, 4, 2, 0, 12, -23, 12, 2, 4, 5};
 
-  //        System.out.println(fact(5));
-  //        fib(0,1,10);
-  //        fib(10);
-  //      System.out.println(power(2,5));
+        //        System.out.println(fact(5));
+        //        fib(0,1,10);
+        //        fib(10);
+        //      System.out.println(power(2,5));
+
     } //main function closed
 
     //-----------------------------------
@@ -35,17 +36,17 @@ public class Recursion {
 //    }
 
     //------------------------------------------------------------------------
- // >>>>>>>>>>  Recursive fibnocci<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // >>>>>>>>>>  Recursive fibnocci<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-        //    static void fib(int a ,int b,int n)
-        //    {
-        //        if(n==0)
-        //            return;
-        //        System.out.print(a+" ");
-        //        fib(b,a+b,n-1);
-        //    }
+    //    static void fib(int a ,int b,int n)
+    //    {
+    //        if(n==0)
+    //            return;
+    //        System.out.print(a+" ");
+    //        fib(b,a+b,n-1);
+    //    }
 
-  //------------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
     // >>>>>>>>>>  Non Recursive fibnocci<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -71,16 +72,16 @@ public class Recursion {
     //------------------------------------------------------------------------
 
     // >>>>>>>>>>    Recursive power <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- static int power(int x, int n)
- {
-     if(n==0)
-     {
-         return 1;
-     }
-     if(n%2==0)
-         return (power(x,n/2) *  power(x,n/2)  );
-     else
-         return (x * power(x,n/2) *  power(x,n/2)  );
- }
+    static int power(int x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        if (n % 2 == 0)
+            return (power(x, n / 2) * power(x, n / 2));
+        else
+            return (x * power(x, n / 2) * power(x, n / 2));
+    }
+
+
 
 }
