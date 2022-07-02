@@ -1,6 +1,14 @@
 import java.util.LinkedList;
 import java.util.Queue;
-
+//1. Simple Tree Formation
+//2. Pre Order
+//3. InOrder
+//4. Post Order
+//5. LevelOrder
+//6. Total No of Nodes
+//7. Sum of nodes
+//8. Height Of a tree
+//9. Diameter Of tree by  O(n)^2 and O(n) time Complexity..
 public class TreeProblems {
 
     static class Node {
@@ -131,6 +139,24 @@ public class TreeProblems {
            return myHeight;
        }
 
+       //Diameter of a tree
+        //Time Complexity = O(n)^2
+
+        public static int diameter(Node root)
+        {
+            if(root==null)
+                return 0;
+            int diam1=diameter(root.left);
+            int diam2=diameter(root.right);
+            int diam3=height(root.left)+height(root.right)+1;
+
+            return Math.max(diam3,Math.max(diam1,diam2));
+
+        }
+
+        //Diameter of a tree
+        //Time Complexity = O(n)
+
        
     }
 
@@ -140,15 +166,30 @@ public class TreeProblems {
         BinaryTree tree = new BinaryTree();
 
         Node root = tree.buildTree(nodes);
-//        System.out.println(root.data);
-//        tree.preOrder(root);
-//        System.out.println();
-//        tree.inOrder(root);
-//        System.out.println();
-//        tree.postOrder(root);
+        System.out.println(root.data);
+
+        System.out.print("Pre order : ");
+        tree.preOrder(root);
+        System.out.println();
+
+        System.out.print("In order : ");
+        tree.inOrder(root);
+        System.out.println();
+
+        System.out.print("Post order : ");
+        tree.postOrder(root);
+        System.out.println();
+
+        System.out.println("Level order : ");
         tree.levelOrder(root);
-        System.out.println("Total Nodes : " + tree.countNodes(root));
-        System.out.println("Sum of Nodes : " + tree.sumOfNodes(root));
-        System.out.println(tree.height(root));
+
+     //Counting of Nodes
+        System.out.println("Total Nodes : "    + tree.countNodes(root));
+     //Sum of Nodes
+        System.out.println("Sum of Nodes : "   + tree.sumOfNodes(root));
+     //Height Of tree
+        System.out.println("Height of tree : " + tree.height(root));
+     //Diameter of tree
+        System.out.println("Diameter : "       + tree.diameter(root));
     }
 }
