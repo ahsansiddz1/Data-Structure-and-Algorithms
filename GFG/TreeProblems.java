@@ -38,33 +38,31 @@ public class TreeProblems {
             return newNode;
         }
 
-        static void preOrder(Node root)
-        {
-            if(root==null)
+        static void preOrder(Node root) {
+            if (root == null)
                 return;
-            System.out.print(root.data+" ");
+            System.out.print(root.data + " ");
             preOrder(root.left);
             preOrder(root.right);
         }
 
-        static void inOrder(Node root)
-        {
-            if(root==null)
+        static void inOrder(Node root) {
+            if (root == null)
                 return;
             inOrder(root.left);
-            System.out.print(root.data+" ");
+            System.out.print(root.data + " ");
             inOrder(root.right);
         }
-        static void postOrder(Node root)
-        {
-            if (root==null)
+
+        static void postOrder(Node root) {
+            if (root == null)
                 return;
             postOrder(root.left);
             postOrder(root.right);
-            System.out.print(root.data+" ");
+            System.out.print(root.data + " ");
         }
-        public static void levelOrder(Node root)
-        {
+
+        public static void levelOrder(Node root) {
             //===============================================
 //     |      Working of LevelOrder                          ||
 //     |       Queue -- > 1 null 2 3 null 4 5                ||
@@ -74,118 +72,167 @@ public class TreeProblems {
 //     |           --2 3                                     ||
 //     |           --4 5                                     ||
             //===============================================
-            if(root==null)
+            if (root == null)
                 return;
 
             Queue<Node> q = new LinkedList<>();
             q.add(root);
             q.add(null);
 
-            while(!q.isEmpty())
-            {
-                Node currNode=q.remove();
-                if(currNode==null)
-                {
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
                     System.out.println();
-                    if(q.isEmpty())
-                    {
+                    if (q.isEmpty()) {
                         break;
-                    }
-                    else {
+                    } else {
                         q.add(null);
                     }
-                }
-                else {
-                    System.out.print(currNode.data+ " ");
-                    if(currNode.left!=null)
+                } else {
+                    System.out.print(currNode.data + " ");
+                    if (currNode.left != null)
                         q.add(currNode.left);
-                    if(currNode.right!=null)
+                    if (currNode.right != null)
                         q.add(currNode.right);
 
                 }
             }//while Loop
         }//LevelOrder Function
-//Counting Of Nodes
-        public static int countNodes(Node root)
-        {
-            if(root==null)
+
+        //Counting Of Nodes
+        public static int countNodes(Node root) {
+            if (root == null)
                 return 0;
-            int leftNodes=countNodes(root.left);
-            int rightNodes=countNodes(root.right);
-            return leftNodes+rightNodes+1;
+            int leftNodes = countNodes(root.left);
+            int rightNodes = countNodes(root.right);
+            return leftNodes + rightNodes + 1;
 
         }
 
- //Sum Of Nodes
-         public static int sumOfNodes(Node root)
-        {
-            if(root==null)
+        //Sum Of Nodes
+        public static int sumOfNodes(Node root) {
+            if (root == null)
                 return 0;
-            int leftSum=sumOfNodes(root.left);
-            int rightSum=sumOfNodes(root.right);
-            return leftSum+rightSum+root.data;
+            int leftSum = sumOfNodes(root.left);
+            int rightSum = sumOfNodes(root.right);
+            return leftSum + rightSum + root.data;
 
         }
 
         //Height of tree
-       public static int height(Node root)
-       {
-           if(root==null)
-               return 0;
-           int leftHeight=height(root.left);
-           int rightHeight=height(root.right);
+        public static int height(Node root) {
+            if (root == null)
+                return 0;
+            int leftHeight = height(root.left);
+            int rightHeight = height(root.right);
 
-           int myHeight=Math.max(leftHeight,rightHeight)+1;
+            int myHeight = Math.max(leftHeight, rightHeight) + 1;
 
-           return myHeight;
-       }
+            return myHeight;
+        }
 
-       //Diameter of a tree
+        //Diameter of a tree
         //Time Complexity = O(n)^2
 
-        public static int diameter(Node root)
-        {
-            if(root==null)
+        public static int diameter(Node root) {
+            if (root == null)
                 return 0;
-            int diam1=diameter(root.left);
-            int diam2=diameter(root.right);
-            int diam3=height(root.left)+height(root.right)+1;
+            int diam1 = diameter(root.left);
+            int diam2 = diameter(root.right);
+            int diam3 = height(root.left) + height(root.right) + 1;
 
-            return Math.max(diam3,Math.max(diam1,diam2));
+            return Math.max(diam3, Math.max(diam1, diam2));
 
         }
 
         //Diameter of a tree
         //Time Complexity = O(n)
 
-        public static class TreeInfo{
+        public static class TreeInfo {
             int ht;
             int diam;
-            TreeInfo(int ht,int diam)
-            {
-                this.ht=ht;
-                this.diam=diam;
+
+            TreeInfo(int ht, int diam) {
+                this.ht = ht;
+                this.diam = diam;
             }
         }
-        public static TreeInfo diameter2(Node root)
-        {
-            if(root==null)
-                return new TreeInfo(0,0);
 
-            TreeInfo left=diameter2(root.left);
-            TreeInfo right=diameter2(root.right);
+        public static TreeInfo diameter2(Node root) {
+            if (root == null)
+                return new TreeInfo(0, 0);
 
-            int myHeight=Math.max(left.ht,right.ht)+1;
+            TreeInfo left = diameter2(root.left);
+            TreeInfo right = diameter2(root.right);
 
-            int diam1= left.diam;
-            int diam2= right.diam;
-            int diam3= left.ht+ right.ht+1;
+            int myHeight = Math.max(left.ht, right.ht) + 1;
 
-            int mydiam=Math.max(diam3,Math.max(diam1,diam2));
+            int diam1 = left.diam;
+            int diam2 = right.diam;
+            int diam3 = left.ht + right.ht + 1;
 
-            TreeInfo myInfo=new TreeInfo(myHeight,mydiam);
+            int mydiam = Math.max(diam3, Math.max(diam1, diam2));
+
+            TreeInfo myInfo = new TreeInfo(myHeight, mydiam);
             return myInfo;
         }
+
+        // Sum of All Nodes at Kth level.
+
+        public static int sumOfKthLevelNodes(Node root, int k) {
+            //===============================================
+//     |      Working of LevelOrder                          ||
+//     |       Queue -- > 1 null 2 3 null 4 5                ||
+//     |                                                     ||
+//     |     Printing                                        ||
+//     |           -- 1                                      ||
+//     |           --2 3                                     ||
+//     |           --4 5                                     ||
+            //===============================================
+            if (root == null)
+                return -1;
+
+            Queue<Node> q = new LinkedList<>();
+            int currLevel = 1;
+            int sum = 0;
+            boolean levelFound = false;
+            q.add(root);
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
+                    currLevel++;
+                    if (levelFound)
+                    {
+                        return sum;
+                    }
+                    if (q.isEmpty()) {
+                        break;
+                    } else {
+                        q.add(null);
+                    }
+
+
+
+                } else {
+                    if (currLevel == k) {
+                         levelFound = true;
+                        sum += currNode.data;
+
+                    }
+                    if (currNode.left != null)
+                        q.add(currNode.left);
+                    if (currNode.right != null)
+                        q.add(currNode.right);
+
+
+                }
+
+            }//while Loop
+            return -1;
+        }//LevelOrder Function
+
        
     }
 
@@ -222,6 +269,58 @@ public class TreeProblems {
         System.out.println("Diameter  (Time Complexity: O(n)^2) : " + tree.diameter(root));
      //Diameter of tree -- O(n)
         System.out.println("Diameter (Time Complexity: O(n)) : "    + tree.diameter2(root).diam);
+     //Sum of Kth Level of Nodes
+        System.out.println("Sum of Nodes at kth level : " + tree.sumOfKthLevelNodes(root,3));
 
     }
 }
+
+//10. SubTree Of another tree.
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+//class Solution {
+//
+//    public boolean isIdentical(TreeNode root, TreeNode subRoot)
+//    {
+//        if(root==null && subRoot==null)
+//            return true;
+//        if(root==null || subRoot==null)
+//            return false;
+//
+//        if(root.val==subRoot.val)
+//        {
+//            return isIdentical(root.left,subRoot.left) && isIdentical(root.right,subRoot.right);
+//        }
+//
+//        return false;
+//
+//    }
+//    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+//        if(subRoot==null)
+//            return true;
+//        if(root==null)
+//            return false;
+//
+//        if(root.val==subRoot.val)
+//        {
+//            if(isIdentical(root,subRoot))
+//                return true;
+//
+//        }
+//        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
+//
+//    }
+//}
